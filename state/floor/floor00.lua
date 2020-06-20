@@ -31,19 +31,19 @@ function floor00:init()
     end
 end
 function floor00:enter(prevStatus)
-    -- if prevStatus.floor > self.floor then
-    --     hero.x = 6
-    --     hero.y = 2
-    --     hero.direction = DIR_UP
-    -- else
-    hero.x = 6
-    hero.y = 10
-    --     hero.direction = DIR_DOWN
-    -- end
-    -- if prevStatus.bgm and prevStatus.bgm ~= self.bgm then
-    --     prevStatus.bgm:stop()
-    -- end
-    -- self.bgm:play()
+    if prevStatus.floor > self.floor then
+        hero.x = 6
+        hero.y = 2
+        hero.direction = DIR_UP
+    else
+        hero.x = 6
+        hero.y = 10
+        hero.direction = DIR_DOWN
+    end
+    if prevStatus.bgm and prevStatus.bgm ~= self.bgm then
+        prevStatus.bgm:stop()
+    end
+    self.bgm:play()
 end
 
 return floor00

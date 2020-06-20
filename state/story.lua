@@ -46,7 +46,7 @@ function story:draw()
     love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle('fill', 0, VIRTUAL_HEIGHT - FONT_SMALL:getHeight(), VIRTUAL_WIDTH, FONT_SMALL:getHeight())
     love.graphics.setColor(1, 1, 1, alpha)
-    love.graphics.printf('空格键跳过', FONT_MICRO, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT - 20, VIRTUAL_WIDTH / 2, 'center')
+    love.graphics.printf('空格键跳过', FONT_SMALL, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT - FONT_SMALL:getHeight(), VIRTUAL_WIDTH / 2, 'center')
     displayFPS()
     push:finish()
 end

@@ -10,13 +10,10 @@ function Robot:init(x, y, floorNum)
                 ['trade'] = function()
                     if hero.money > 25 then
                         hero.money = hero.money - 25
-                        hero.life = hero.life + 800
-                        sound['item']:stop()
-                        sound['item']:play()
-                    else
-                        sound['refuse']:stop()
-                        sound['refuse']:play()
+                        hero.hp = hero.hp + 800
+                        return true
                     end
+                    return false
                 end
             },
             {
@@ -25,12 +22,9 @@ function Robot:init(x, y, floorNum)
                     if hero.money > 25 then
                         hero.money = hero.money - 25
                         hero.attack = hero.attack + 4
-                        sound['item']:stop()
-                        sound['item']:play()
-                    else
-                        sound['refuse']:stop()
-                        sound['refuse']:play()
+                        return true
                     end
+                    return false
                 end
             },
             {
@@ -39,12 +33,9 @@ function Robot:init(x, y, floorNum)
                     if hero.money > 25 then
                         hero.money = hero.money - 25
                         hero.defense = hero.defense + 4
-                        sound['item']:stop()
-                        sound['item']:play()
-                    else
-                        sound['refuse']:stop()
-                        sound['refuse']:play()
+                        return true
                     end
+                    return false
                 end
             },
             {

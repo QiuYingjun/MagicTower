@@ -58,7 +58,7 @@ function love.load()
         canvas = true
     })
     Gamestate.registerEvents()
-    Gamestate.switch(floor[2])
+    Gamestate.switch(floor['title'])
 end
 
 function love.draw()

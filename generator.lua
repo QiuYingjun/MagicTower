@@ -1,5 +1,4 @@
 local Entity = require "class.Entity"
--- local Fairy = require "class.Fairy"
 local Door = require "class.Door"
 local Item = require "class.Item"
 local Enemy = require "class.Enemy"
@@ -70,10 +69,15 @@ end
 function generateItem(x, y, ch2, ch3)
     local e = Item(x, y, 'I'..ch2..ch3, image['I'..ch2], quads[tonumber(ch3)])
     if ch2 == '1' then -- 钥匙
-        e.bag[keyColors[tonumber(ch3)]] = 1
-        return e
+        if tonumber(ch3) <= 3 then
+            e.bag[keyColors[tonumber(ch3)]] = 1
+        else
+            for i, keyColor in ipairs(keyColors) do
+                e.bag[keyColor] = 1
+            end
+        end
     elseif ch2 == '2' then -- 药水
-        e.bag['life'] = 300 * tonumber(ch3) - 100
+        e.bag['hp'] = 300 * tonumber(ch3) - 100
     elseif ch2 == '7' then-- 宝石
         e.bag[gemColors[tonumber(ch3)]] = 3
     elseif ch2 == '4' then-- 剑

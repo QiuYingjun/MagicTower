@@ -28,19 +28,19 @@ function floor02:init()
     end
 end
 function floor02:enter(prevStatus)
-    -- if prevStatus and prevStatus.floor > self.floor then
-    --     hero.x = 1
-    --     hero.y = 10
-    --     hero.direction = DIR_UP
-    -- else
-    hero.x = 1
-    hero.y = 2
-    --     hero.direction = DIR_DOWN
-    -- end
-    -- if prevStatus and prevStatus.bgm and prevStatus.bgm ~= self.bgm then
-    --     prevStatus.bgm:stop()
-    --     self.bgm:play()
-    -- end
+    if prevStatus and prevStatus.floor > self.floor then
+        hero.x = 1
+        hero.y = 10
+        hero.direction = DIR_UP
+    else
+        hero.x = 1
+        hero.y = 2
+        hero.direction = DIR_DOWN
+    end
+    if prevStatus and prevStatus.bgm and prevStatus.bgm ~= self.bgm then
+        prevStatus.bgm:stop()
+        self.bgm:play()
+    end
 end
 
 return floor02

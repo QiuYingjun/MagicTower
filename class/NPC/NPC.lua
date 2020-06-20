@@ -49,10 +49,10 @@ function NPC:showTalk()
     local y = self.y * HEIGHT
     local w = WIDTH * 4
     local h = HEIGHT * 2
-    if X0 + self.x + 4 > MAP_SIZE then
+    if self.x + 4 > MAP_SIZE then
         x = (X0 + self.x - 5) * WIDTH
     end
-    if Y0 + self.y + 2 > MAP_SIZE then
+    if self.y + 2 > MAP_SIZE then
         y = (Y0 + self.y - 2) * HEIGHT
     end
     love.graphics.rectangle('fill', x, y, w, h)
@@ -77,7 +77,7 @@ function NPC:showShop()
         love.graphics.printf(option['desc'], FONT_SMALL, mx, my + HEIGHT / 2 + i * HEIGHT, mw, 'center')
         if i == self.shopCursor then
             love.graphics.setColor(1, 1, 1, cursorAlpha)
-            love.graphics.rectangle('line', mx + padding, my + HEIGHT / 2 + i * HEIGHT, mw - padding * 2, HEIGHT - padding * 2)
+            love.graphics.rectangle('line', mx + padding, my + HEIGHT / 2 + i * HEIGHT - 4, mw - padding * 2, HEIGHT - padding * 2)
         end
     end
     love.graphics.setColor(r, g, b, a)
@@ -102,7 +102,17 @@ function NPC:keypressed(key)
             sound['select']:stop()
             sound['select']:play()
         elseif key == 'space' then
-            self.shop['menu'][self.shopCursor].trade()
+            local trade_success = self.shop['menu'][self.shopCursor].trade()
+            if trade_success then
+                sound['item']:stop()
+                sound['item']:play()
+            elseif trade_success == false then
+                sound['refuse']:stop()
+                sound['refuse']:play()
+            else
+                sound['page']:stop()
+                sound['page']:play()
+            end
         end
     end
 end

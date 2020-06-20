@@ -80,6 +80,7 @@ function FloorBase:draw()
             entity:draw()
         end
     end
+    hero:draw()
 
     for i, entity in ipairs(self.entities) do
         if not entity.die then
@@ -90,7 +91,6 @@ function FloorBase:draw()
             end
         end
     end
-    hero:draw()
     if self.curtainAlpha > 0 then
         self:showCurtain()
     end
@@ -115,7 +115,7 @@ function FloorBase:drawBase()
     love.graphics.printf('级', FONT_SMALL, 4 * WIDTH, HEIGHT * 1.5, WIDTH, 'left')
 
     local panel = {
-        {'生命', hero.life},
+        {'生命', hero.hp},
         {'攻击', hero.attack},
         {'防御', hero.defense},
         {'金币', hero.money},

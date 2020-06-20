@@ -4,8 +4,6 @@ local DEFAULT_COLOR = {0.2, 0.2, 0.2, 0}
 local LABEL_DEFAULT_COLOR = {1, 1, 1, 1}
 local HOT_COLOR = {0.8, 0.8, 0.8, 1}
 local LABEL_HOT_COLOR = {0, 0, 0, 1}
-local select_sound = sound['select']
-local start_sound = love.audio.newSource('assets/sound/start.mp3', 'static')
 
 function Button:init(x, y, width, height, label, font, fn)
     self.x = x
@@ -40,10 +38,11 @@ function Button:update(dt)
     end
 
     if not self.last_mouse_on and self.now_mouse_on then
-        select_sound:play()
+        sound['select']:stop()
+        sound['select']:play()
     end
     if self.now_mouse_on and not self.last_pressed and self.now_pressed then
-        start_sound:play()
+        sound['start']:play()
         self.fn()
     end
     self.last_pressed = self.now_pressed
@@ -59,7 +58,8 @@ function Button:draw()
         self.x,
         self.y + self.height / 2 - self.font:getHeight(self.label) / 2,
         self.width,
-    "center")
+        "center"
+    )
 end
 
 return Button

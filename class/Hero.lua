@@ -14,14 +14,14 @@ function Hero:init(x, y)
     self.animation = animation[DIR_UP]
 
     self.level = 1
-    self.life = 1000
-    self.attack = 1100
-    self.defense = 1100
-    self.money = 1000
+    self.hp = 1000
+    self.attack = 10
+    self.defense = 10
+    self.money = 0
     self.exp = 0
-    self.yellowKey = 10
-    self.blueKey = 10
-    self.redKey = 10
+    self.yellowKey = 0
+    self.blueKey = 0
+    self.redKey = 0
 
     self.damageCross = 1
     self.rockPick = 0

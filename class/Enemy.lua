@@ -18,11 +18,11 @@ end
 
 function Enemy:collide()
     print(self:getDamage())
-    if self:getDamage() < hero.life then
+    if self:getDamage() < hero.hp then
         self.die = true
         hero.x = self.x
         hero.y = self.y
-        hero.life = hero.life - self:getDamage()
+        hero.hp = hero.hp - self:getDamage()
         hero.money = hero.money + self.money
         hero.exp = hero.exp + self.exp
         hero.refreshMap = true
@@ -39,6 +39,6 @@ function Enemy:getDamage()
         return 1 / 0
     end
     local count = math.ceil(self.hp / (hero.attack - self.defense))
-    return math.max(0, self.autoDamage + self.ratioDamage * hero.life + (count - 1) * (self.attack - hero.defense))
+    return math.max(0, self.autoDamage + self.ratioDamage * hero.hp + (count - 1) * (self.attack - hero.defense))
 end
 return Enemy

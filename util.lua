@@ -32,7 +32,7 @@ function displayFPS()
     -- simple FPS display across all states
     love.graphics.setFont(FONT_MICRO)
     love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
+    love.graphics.printf('FPS: ' .. tostring(love.timer.getFPS()), FONT_MICRO, 10, 10, 50, 'left')
     love.graphics.setColor(1, 1, 1, 1)
 end
 
